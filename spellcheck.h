@@ -7,4 +7,7 @@ class Spellcheck{
     public:
         // public parts
         Spellcheck(std::string user_input); //constructor
+        struct Node();
+        void insert(Node, string s);
+        
 };
