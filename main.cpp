@@ -11,5 +11,7 @@ int main(){
 
     userWord.fillDictionary();
 
+    Spellcheck *start_node = new Spellcheck;
+
     return 0;
 }
