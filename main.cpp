@@ -1,17 +1,24 @@
-#include <iostream>
 #include "spellcheck.h"
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
-int main(){
-    std::string word;
-
-    std::cin >> word;
-
-    Spellcheck userWord(word);
-
-    userWord.fillDictionary();
-
-    Spellcheck *start_node = new Spellcheck;
-
-    return 0;
+Spellcheck::Spellcheck(std::string user_input){
+    // what the fortnite
+    this-> word = user_input;
 }
+
+void Spellcheck::fillDictionary(){
+
+    std::ifstream inFile(fileName);
+    std::string line;
+
+    while (std::getline(inFile, line)) {
+        dictionary.push_back(line);
+    }
+    inFile.close();
+    std::cout << dictionary[5] << std::endl;
+}
+
