@@ -22,3 +22,4 @@ void Spellcheck::fillDictionary(){
     std::cout << dictionary[5] << std::endl;
 }
 
+//Add a print result function which will return the words from the dictionary that might match the spelling
