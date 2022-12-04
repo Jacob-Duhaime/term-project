@@ -25,5 +25,5 @@ void Spellcheck::fillDictionary(){
 
 /*
 Separate each character by node. Every node will be searching for the possible word in the dictionary. Spawn in the end node...etc
-
+Note: Add exception handling so that it skips the mispelled word from our algorithm in order to pull the right one from the dictionary
 */
