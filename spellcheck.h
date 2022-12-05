@@ -6,23 +6,23 @@ class Spellcheck{
         // private parts
         std::string word;
         std::string fileName = "dictionary.txt";
-        std::vector<std::string> dictionary;
     public:
         // public parts
-        Spellcheck(std::string user_input); //constructor
-        void fillDictionary();
+        struct CreateNode{
+            CreateNode* branch[256];
+            bool flag;
+            CreateNode(){
+                for (int i = 0; i < 256; i++){
+                    branch[i] = NULL;
+                }
 
-        class Spellcheck* branches[256];
-
-        char letter;
-
-        std::string nodeword;
-
-        Spellcheck(){
-            letter = NULL;
-            nodeword = "";
-            for (int i = 0; i < 256; i++){
-                branches[i] = NULL;
+                flag = false;
             }
-        }
+        };
+        Spellcheck(std::string user_input); //constructor
+        std::vector<std::string> fillDictionary();
+        bool inDict(Spellcheck::CreateNode* start_node, std::string ans);
+        void posibilities(Spellcheck::CreateNode* start_node, std::string ans);
+        void buildTree(Spellcheck::CreateNode* start_node, std::string segment);
+
 };
