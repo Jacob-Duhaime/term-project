@@ -6,13 +6,12 @@
 #include <vector>
 
 Spellcheck::Spellcheck(std::string user_input){
-    // This is the word that the user will input into the program which will be used to check for its spelling from our dictionary.
+    // what the fortnite
     this-> word = user_input;
 }
 
-//Function that reads the dictionary of words that will be used in order to find the word in.
-void Spellcheck::fillDictionary(){
-
+std::vector<std::string> Spellcheck::fillDictionary(){
+    std::vector<std::string> dictionary;
     std::ifstream inFile(fileName);
     std::string line;
 
@@ -20,10 +19,54 @@ void Spellcheck::fillDictionary(){
         dictionary.push_back(line);
     }
     inFile.close();
-    std::cout << dictionary[5] << std::endl;
+    //std::cout << dictionary[5] << std::endl;
+    return dictionary;
 }
 
-/*
-Separate each character by node. Every node will be searching for the possible word in the dictionary. Spawn in the end node...etc
-Note: Add exception handling so that it skips the mispelled word from our algorithm in order to pull the right one from the dictionary
-*/
+void Spellcheck::buildTree(Spellcheck::CreateNode* start_node, std::string segment){
+    Spellcheck::CreateNode* current =  start_node;
+    for (int i = 0; i < segment.length(); i++){
+        if (current->branch[segment[i]] == NULL){
+            current->branch[segment[i]] = new Spellcheck::CreateNode();
+            //std::cout << segment[i] << std::endl;
+        }
+
+        current = current->branch[segment[i]];
+    }
+
+    current->flag = true;
+}
+
+bool Spellcheck::inDict(Spellcheck::CreateNode* start_node, std::string ans){
+    for (int i = 0; i < word.length(); i++){
+        if (start_node->branch[ans[i]] == NULL){
+            Spellcheck::posibilities(start_node, ans.substr(0, i));
+            return false;
+        }
+
+        start_node = start_node->branch[ans[i]];
+    }
+    if (start_node->flag == true){
+        return true;
+    }
+
+    Spellcheck::posibilities(start_node, ans);
+
+    return false;
+}
+
+void Spellcheck::posibilities(Spellcheck::CreateNode* start_node, std::string ans){
+    if (start_node->flag == true){
+        std::cout << ans << std::endl;
+    }
+    for (int i = 0; i < 256; i++){
+        if (start_node->branch[i] == NULL){
+            // do nothing
+        }
+        else{
+            ans.push_back(i);
+            Spellcheck::posibilities(start_node->branch[i], ans);
+            ans.pop_back();
+        }
+    }
+}
