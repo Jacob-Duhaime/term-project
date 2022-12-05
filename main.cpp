@@ -16,12 +16,12 @@ int main(){
 
     Spellcheck::CreateNode* start_node = new Spellcheck::CreateNode;
 
-    for (int i = 0; i < 100; i++){
-        userWord.buildTree(start_node, dict[i]);
+    for (int i = 0; i < 1000; i++){
         if (dict[i] == word){
             std::cout << word << std::endl;
             return 0;
         }
+        userWord.buildTree(start_node, dict[i]);
     }
 
     if (userWord.inDict(start_node, word) == true){
