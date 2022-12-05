@@ -19,7 +19,7 @@ std::vector<std::string> Spellcheck::fillDictionary(){
     std::string line;
 
     while (std::getline(inFile, line)) {
-        dictionary.push_back(line);
+        dictionary.push_back(line); //get file and put it into dictonary vector
     }
     inFile.close();
     //std::cout << dictionary[5] << std::endl;
@@ -55,7 +55,7 @@ bool Spellcheck::inDict(Spellcheck::CreateNode* start_node, std::string ans){
         return true;
     }
 
-    Spellcheck::posibilities(start_node, ans);
+    Spellcheck::posibilities(start_node, ans); //call to function
 
     return false;
 }
