@@ -1,25 +1,31 @@
+#include <iostream>
 #include "spellcheck.h"
 #include <string>
-#include <iostream>
-#include <fstream>
-#include <sstream>
 #include <vector>
 
-Spellcheck::Spellcheck(std::string user_input){
-    // what the fortnite
-    this-> word = user_input;
-}
+int main(){
+    std::string word;
 
-void Spellcheck::fillDictionary(){
+    std::cin >> word;
+    std::cout << std::endl;
 
-    std::ifstream inFile(fileName);
-    std::string line;
+    Spellcheck userWord(word);
+    std::vector<std::string> dict = userWord.fillDictionary();
 
-    while (std::getline(inFile, line)) {
-        dictionary.push_back(line);
+    Spellcheck::CreateNode* start_node = new Spellcheck::CreateNode;
+
+    for (int i = 0; i < 100; i++){
+        userWord.buildTree(start_node, dict[i]);
+        if (dict[i] == word){
+            std::cout << word << std::endl;
+            return 0;
+        }
     }
-    inFile.close();
-    std::cout << dictionary[5] << std::endl;
-}
 
-//Add a print result function which will return the words from the dictionary that might match the spelling
+    if (userWord.inDict(start_node, word) == true){
+        std::cout << word << std::endl;
+    }
+
+    
+    return 0;
+}
