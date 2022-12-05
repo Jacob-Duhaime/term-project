@@ -22,7 +22,7 @@ Presented to you by: Angel Pichardo De La Cruz, Jacob Duhaime, Nicholas Faciano 
 <p>Absolutely! A fun fact about Trie is that time is really constant when it comes to this data structure. The number of other items in the data structure does not impact the steps it takes in order to find a match. The only thing that impacts this data structure is the length of the string itself, for example: if we are looking for the word “cat” in a library of 10 words vs in a library of 10,000 words, the time it would take to find the word Cat is the same.</p>
 
 <h2>Time Complexity</h2>
-
+<p>Trie as a data structure allows for the following functions which are: insertion, deletion, and searching. Using Trie, you can search things in O(M) times. Trie insertion and search costs formula can be seen as O(key_length) and the memory that it takes is O(ALPHABET_SIZE * key_length * N). Essentially the only thing that affects Trie would be the size of the word that you are using. While Trie seems to be using heavy resources, the only thing it is heavy on is storage. Due to the nature in which this data structure works, you are essentially spawning in a new node every time we go past 1 character. In simple terms if your word contains 5 letters, you are spawning the alphabet 5 times and it would take up 130 bits of data (for every letter of the alphabet 5 times). That is the only disadvantage of the Trie data structure, the fact that it needs so much memory for storing all of the information. </p>
 
 #New Section
 <h1>Our Project: Spell Checker</h1>
