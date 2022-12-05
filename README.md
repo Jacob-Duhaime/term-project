@@ -24,7 +24,9 @@ Presented to you by: Angel Pichardo De La Cruz, Jacob Duhaime, Nicholas Faciano 
 <h2>Time Complexity</h2>
 
 
-//New Section
+#New Section
 <h1>Our Project: Spell Checker</h1>
 
 <h2>How To download and run our project</h2>
+
+<h4>For More information about Trie feel free to download our Trie report located under the "Files" fodler in our GitHub main repository</h4>
