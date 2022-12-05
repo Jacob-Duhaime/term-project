@@ -4,11 +4,13 @@
 #include <vector>
 
 int main(){
+    //take input from user
     std::string word;
 
     std::cin >> word;
     std::cout << std::endl;
-
+    
+    //Call the spell check function and read the dictionary
     Spellcheck userWord(word);
     std::vector<std::string> dict = userWord.fillDictionary();
 
