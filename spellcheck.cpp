@@ -5,11 +5,14 @@
 #include <sstream>
 #include <vector>
 
+
+//Calling the class. This function is the one that handles the user input for the word that they want to spell check
 Spellcheck::Spellcheck(std::string user_input){
     // what the fortnite
     this-> word = user_input;
 }
 
+//Function that reads the dictionary provided to the program
 std::vector<std::string> Spellcheck::fillDictionary(){
     std::vector<std::string> dictionary;
     std::ifstream inFile(fileName);
@@ -23,6 +26,7 @@ std::vector<std::string> Spellcheck::fillDictionary(){
     return dictionary;
 }
 
+//Builds the tree to find the word
 void Spellcheck::buildTree(Spellcheck::CreateNode* start_node, std::string segment){
     Spellcheck::CreateNode* current =  start_node;
     for (int i = 0; i < segment.length(); i++){
@@ -37,6 +41,7 @@ void Spellcheck::buildTree(Spellcheck::CreateNode* start_node, std::string segme
     current->flag = true;
 }
 
+//Check if the word typed or the posibility is IN the dictionary
 bool Spellcheck::inDict(Spellcheck::CreateNode* start_node, std::string ans){
     for (int i = 0; i < word.length(); i++){
         if (start_node->branch[ans[i]] == NULL){
@@ -55,6 +60,7 @@ bool Spellcheck::inDict(Spellcheck::CreateNode* start_node, std::string ans){
     return false;
 }
 
+//Function that returns the possible words from the dictionary
 void Spellcheck::posibilities(Spellcheck::CreateNode* start_node, std::string ans){
     if (start_node->flag == true){
         std::cout << ans << std::endl;
